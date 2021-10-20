@@ -1,0 +1,11 @@
+.button {
+  background-color: aqua;
+  width: 100px;
+  height: 70px;
+}
+
+.btnContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
