@@ -1,4 +1,4 @@
-import {useState} from "react";
+import { useState } from "react";
 import FeedbackOptions from "../FeedbackOptions";
 import s from "./FeedBack.module.css";
 import Statistics from "../Statistics";
@@ -11,29 +11,26 @@ export default function FeedBack() {
   const [neutral, setNeutral] = useState(0);
   const [bad, setBad] = useState(0);
 
-  const changeFeedback = event => {
+  const changeFeedback = (event) => {
     const { feedback } = event.target;
     switch (feedback) {
-      case 'good':
-        setGood(state => state + 1);
+      case "good":
+        setGood((state) => state + 1);
         break;
-      
-      case 'bad':
-        setBad(state => state + 1);
+
+      case "bad":
+        setBad((state) => state + 1);
         break;
-      case 'neutral':
-        setNeutral(state => state + 1):
+      case "neutral":
+        setNeutral((state) => state + 1);
         break;
-      
+
       default:
         return;
-    };
-}
+    }
+  };
 
-  
-
-  countTotalFeedback = () => {
-    
+  const countTotalFeedback = () => {
     return good + neutral + bad;
   };
 
@@ -46,27 +43,24 @@ export default function FeedBack() {
     return Math.round((good / total) * 100);
   };
 
-    return (
-      <div className={s.Container}>
-        <Section title="Please leave feedback">
-          <FeedbackOptions
-            options={FEEDBACK_OPTIONS}
-            onGiveFeedback={changeFeedback}
-          />
-        </Section>
+  return (
+    <div className={s.Container}>
+      <Section title="Please leave feedback">
+        <FeedbackOptions
+          options={FEEDBACK_OPTIONS}
+          onGiveFeedback={changeFeedback}
+        />
+      </Section>
 
-        <Section title="Statistics">
-          <Statistics
-            good={good}
-            neutral={neutral}
-            bad={bad}
-            total={countTotalFeedback()}
-            positivePercentage={countPositiveFeedbackPercentage()}
-          />
-        </Section>
-      </div>
-    );
-  }
-
-
-
+      <Section title="Statistics">
+        <Statistics
+          good={good}
+          neutral={neutral}
+          bad={bad}
+          total={countTotalFeedback()}
+          positivePercentage={countPositiveFeedbackPercentage()}
+        />
+      </Section>
+    </div>
+  );
+}
