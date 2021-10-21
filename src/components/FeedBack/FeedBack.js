@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import {useState} from "react";
 import FeedbackOptions from "../FeedbackOptions";
 import s from "./FeedBack.module.css";
 import Statistics from "../Statistics";
@@ -6,16 +6,21 @@ import Section from "../Section";
 
 import { FEEDBACK_OPTIONS } from "../Options/Option";
 
-class FeedBack extends Component {
-  state = {
-    good: 0,
-    neutral: 0,
-    bad: 0,
-  };
+export default function FeedBack() {
+  const [good, setGood] = useState(0);
+  const [neutral, setNeutral] = useState(0);
+  const [bad, setBad] = useState(0);
 
-  changeFeedback = (feedback) => {
-    this.setState((prevState) => ({ [feedback]: prevState[feedback] + 1 }));
-  };
+  const changeFeedback = event => {
+    const { feedback } = event.target;
+    switch (feedback) {
+      case 'good':
+        setGood()
+    }
+
+}
+
+  
 
   countTotalFeedback = () => {
     const arrayFeedBack = Object.values(this.state);
